@@ -1,0 +1,200 @@
+<mvc:View
+	controllerName="numen.talentos.ztlnt2021012.controller.FlightDetail"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Page title="{i18n>FlightDetailsOf}{Connid}"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+    
+    <content>
+
+     <VBox class="sapUiSmallMargin">
+		<f:Form id="FormOrigem"
+			editable="true">
+			<f:title>
+				<core:Title text="{i18n>origem_voo_title}" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="{i18n>numero_voo_lbl}">
+							<f:fields>
+								<Input enabled="{editFlithModel>/isNew}" value="{Connid}" id="connidInp"/>
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>pais_origem_voo_lbl}">
+							<f:fields>
+								<Input value="{Countryfr}" />
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>cidade_origem_voo_lbl}">
+							<f:fields>
+								<Input value="{Cityfrom}" />
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>aeroporto_origem_voo_lbl}">
+							<f:fields>
+								<Input value="{Airpfrom}" />
+							</f:fields>
+						</f:FormElement>                         
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+      
+
+        <f:Form id="FormDestino"
+			editable="true">
+			<f:title>
+				<core:Title text="{i18n>destino_voo_title}" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>						
+                        <f:FormElement label="{i18n>pais_destino_voo_lbl}">
+							<f:fields>
+								<Input value="{Countryto}" />
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>cidade_destino_voo_lbl}">
+							<f:fields>
+								<Input value="{Cityto}" />
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>aeroporto_destino_voo_lbl}">
+							<f:fields>
+								<Input value="{Airpto}" />
+							</f:fields>
+						</f:FormElement>                         
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+
+          <f:Form id="FormDadosAdc"
+			editable="true">
+			<f:title>
+				<core:Title text="{i18n>inform_adicionais_voo_title}" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="{i18n>duracao_voo_lbl}">
+							<f:fields>
+								<Input 	type="Number" value="{path:'Fltime', type: 'sap.ui.model.odata.type.Int32'}"/>
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>hora_partida_lbl}">
+							<f:fields>								
+                                	<TimePicker				
+                                        value="{Deptime}"
+                                        valueFormat="HHmmss"
+                                        displayFormat="HH:mm:ss"
+                                        maskMode="On"/>
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>hora_chegada_lbl}">
+							<f:fields>
+								
+                                <TimePicker				
+                                        value="{Arrtime}"
+                                        valueFormat="HHmmss"
+                                        displayFormat="HH:mm:ss"
+                                        maskMode="On"/>
+							</f:fields>
+						</f:FormElement>
+                         <f:FormElement label="{i18n>distancia_voo_lbl}">
+							<f:fields>
+								<Input value="{Distance}" />
+                                <Select id="distId" selectedKey="{Distid}">
+									<items>
+										<core:Item text="Milhas" key="MI"/>
+										<core:Item text="KM" key="KM"/>
+									</items>
+								</Select>
+							</f:fields>
+						</f:FormElement> 
+                        <f:FormElement label="{i18n>tipo_voo_lbl}">
+							<f:fields>								
+                                	<Select id="fltypeId" selectedKey="{Fltype}">
+									<items>
+										<core:Item text="Regular" key=""/>
+										<core:Item text="Fretado" key="X"/>
+									</items>
+								</Select>
+							</f:fields>
+						</f:FormElement>         
+
+                        <f:FormElement label="{i18n>chegada_n_dias_lbl}">
+							<f:fields>
+								<Input value="{Period}" />
+							</f:fields>
+						</f:FormElement>       
+
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox> 
+    </content>
+     <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="{i18n>salvar_btn}" type="Accept" press=".onBtnSavePress" />				
+				<Button text="{i18n>delete_btn}" type="Reject" press=".onBtnDeletePress" visible="{= !${editCompanyModel>/isNew}}"  />
+			</OverflowToolbar>
+	</footer>
+</Page>   
+   
+</mvc:View>
